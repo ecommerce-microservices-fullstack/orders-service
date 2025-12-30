@@ -1,0 +1,17 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+# to see print statements
+ENV PYTHONUNBUFFERED=1 
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+
+CMD [ "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080"]
