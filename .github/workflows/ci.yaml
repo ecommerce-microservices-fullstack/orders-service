@@ -47,7 +47,7 @@ jobs:
               id: meta
               run: |
                 echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-                echo "branch=${GITHUB_REF##*/}" >> $GITHUB_OUTPUTs
+                echo "branch=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
             
             - name: Build image
               run: |
