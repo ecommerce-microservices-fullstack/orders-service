@@ -5,6 +5,9 @@ on:
         branches: [ main, develop ]
     pull_request:
 
+env:
+  IMAGE_NAME: misha654/order-service
+
 jobs:
     test:
         name: Run tests
