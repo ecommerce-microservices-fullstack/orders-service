@@ -2,6 +2,7 @@ from pydantic import Field
 from pydantic_settings import BaseSettings
 import os
 
+
 class Settings(BaseSettings):
     kafka_bootstrap: str = Field(os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092"))
 

@@ -9,12 +9,15 @@ import logging
 
 router = APIRouter()
 
+
 @router.post("/order")
-async def make_order(request: Request, body: ItemSchema, db: AsyncSession = Depends(get_db)):
+async def make_order(
+    request: Request, body: ItemSchema, db: AsyncSession = Depends(get_db)
+):
     order = await create_order(db, body)
 
     orders_total.inc()
     logging.info(f"Order {order.id} was created successfully")
     await publish_order_created(request.app, order)
-    
+
     return {"status": "Order created", "order_id": order.id}
